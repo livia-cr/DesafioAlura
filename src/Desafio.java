@@ -20,8 +20,8 @@ public class Desafio {
         String menu = """
                 \n** Opções:
                 1- Consutar saldos
-                2- Receber Valor
-                3- Transferir valor
+                2- Transferir valor
+                3- Receber Valor
                 4- Sair
                 
                 Digite sua opção:
@@ -29,6 +29,29 @@ public class Desafio {
         while (opcao != 4) {
             System.out.println(menu);
             opcao = leia.nextInt();
+
+            if (opcao == 1) {
+                //Visualização do saldo
+                System.out.println("O saldo atualizado é "+ saldo);
+            } else if (opcao == 2) {
+                //Valor enviado
+                System.out.println("Qual o valor que deseja transferir? ");
+                double valor = leia.nextDouble();
+                if (valor > saldo) {
+                    System.out.println("Não há saldo para realizar a transferência.");
+                } else {
+                    saldo -= valor;
+                    System.out.println("Novo saldo "+ saldo);
+                }
+            } else if (opcao == 3) {
+                //Valor recebido
+                System.out.println("Valor recebido: ");
+                double valor = leia.nextDouble();
+                saldo += valor;
+                System.out.println("Novo saldo "+ saldo);
+            } else if (opcao != 4) {
+                System.out.println("Opção inválida!");
+            }
         }
     }
 }
